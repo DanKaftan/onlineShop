@@ -39,7 +39,7 @@ public class ListView extends AppCompatActivity {
 
     class CustomAdapter extends BaseAdapter {
 
-//check1
+//check11
         @Override
         public int getCount() {
             return items.size();
