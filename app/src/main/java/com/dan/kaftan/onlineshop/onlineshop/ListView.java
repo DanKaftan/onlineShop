@@ -39,7 +39,7 @@ public class ListView extends AppCompatActivity {
 
     class CustomAdapter extends BaseAdapter {
 
-
+//check
         @Override
         public int getCount() {
             return items.size();
@@ -65,7 +65,7 @@ public class ListView extends AppCompatActivity {
             TextView itemPrice = (TextView)view.findViewById(R.id.tv_price);
 
             itemName.setText(items.get(i).getName());
-            itemPrice.setText(Integer.toString(items.get(i).getPrice()));
+            itemPrice.setText("מחיר:"+Integer.toString(items.get(i).getPrice()));
             downloadImage("items_images", items.get(i).getItemImageFile(), imageView);
 
             return view;
