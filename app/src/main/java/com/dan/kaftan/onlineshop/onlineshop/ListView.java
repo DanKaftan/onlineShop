@@ -19,10 +19,11 @@ import java.util.ArrayList;
 
 public class ListView extends AppCompatActivity {
 
-    ArrayList<Item> items;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference storageRef = storage.getReferenceFromUrl("gs://online-shop-a32c0.appspot.com");
+    // init firebase storage
+    protected FirebaseStorage storage = FirebaseStorage.getInstance();
+    protected StorageReference storageRef = storage.getReferenceFromUrl("gs://online-shop-a32c0.appspot.com");
 
+    protected ArrayList<Item> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,6 @@ public class ListView extends AppCompatActivity {
 
     class CustomAdapter extends BaseAdapter {
 
-//check111111
         @Override
         public int getCount() {
             return items.size();
@@ -65,8 +65,8 @@ public class ListView extends AppCompatActivity {
             TextView itemPrice = (TextView)view.findViewById(R.id.tv_price);
 
             itemName.setText(items.get(i).getName());
-            itemPrice.setText("מחיר:"+Integer.toString(items.get(i).getPrice()));
-            downloadImage("items_images", items.get(i).getItemImageFile(), imageView);
+            itemPrice.setText("מחיר:"+(items.get(i).getPrice()));
+            downloadImage(ShopSpecificInfo.getShopInfo("shopBucket"), items.get(i).getItemImageFile(), imageView);
 
             return view;
         }
@@ -74,6 +74,7 @@ public class ListView extends AppCompatActivity {
 
     private void downloadImage(String folder, String imageName, final ImageView imageView) {
 
+        System.out.println("going to download: " + folder + "/" +imageName);
         storageRef.child(folder + "/" +imageName).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
@@ -88,6 +89,7 @@ public class ListView extends AppCompatActivity {
             }
         });
     }
+
     private void setItemsList (){
 
         Intent i = getIntent();

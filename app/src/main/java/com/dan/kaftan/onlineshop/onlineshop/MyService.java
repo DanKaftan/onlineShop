@@ -46,7 +46,7 @@ public class MyService extends FirebaseMessagingService {
     private void handleNow(RemoteMessage remoteMessage){
         System.out.println("Alon" + remoteMessage.toString());
         // Intent to open your activity
-        Intent intent = new Intent(this, get_image.class);
+        Intent intent = new Intent(this, DownloadCatalog.class);
         NotificationUtils.notificatePush(this, 1, "Ticker", remoteMessage.getNotification().getTitle(), remoteMessage.getData().get("1stkey"), intent);
     }
 

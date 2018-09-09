@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Item implements Serializable {
 
     private String name;
-    private int price;
+    private String price;
     private String itemImageFile;
 
 
@@ -14,7 +14,7 @@ public class Item implements Serializable {
         this.name = name;
     }
 
-    public void setPrice(int price){
+    public void setPrice(String price){
         this.price = price;
     }
 
@@ -27,11 +27,20 @@ public class Item implements Serializable {
         return name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
     public String getItemImageFile() {
         return itemImageFile;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", itemImageFile='" + itemImageFile + '\'' +
+                '}';
     }
 }

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent i = new Intent(MainActivity.this, get_image.class);
+        Intent i = new Intent(MainActivity.this, DownloadCatalog.class);
         startActivity(i);
 //        btn = (Button)findViewById(R.id.btn);
 //        onClick();
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, get_image.class);
+                Intent i = new Intent(MainActivity.this, DownloadCatalog.class);
                 startActivity(i);
             }
         });
