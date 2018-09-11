@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.dan.kaftan.onlineshop.onlineshop.DownloadCatalog" >
+        <activity android:name="com.dan.kaftan.common.DownloadCatalogActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -17,21 +17,15 @@
         </intent-filter>
         </activity>
 
-        <service android:name="com.dan.kaftan.onlineshop.onlineshop.FcmToken">
+        <service android:name="com.dan.kaftan.common.FcmToken">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name="com.dan.kaftan.onlineshop.onlineshop.MyService">
+            android:name="com.dan.kaftan.common.MyService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
-        <service
-            android:name="com.dan.kaftan.onlineshop.onlineshop.MyService">
-            <intent-filter>
-               <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
     </application>
