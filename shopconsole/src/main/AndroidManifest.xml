@@ -9,7 +9,7 @@ package="com.dan.kaftan.shopconsole">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name="com.dan.kaftan.common.DownloadCatalogActivity" >
+    <activity android:name="com.dan.kaftan.shopconsole.ConsoleDownloadCatalogActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -29,5 +29,10 @@ package="com.dan.kaftan.shopconsole">
         </intent-filter>
     </service>
 </application>
+
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
 
 </manifest>

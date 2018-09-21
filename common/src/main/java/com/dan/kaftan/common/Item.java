@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 public class Item implements Serializable {
 
-    private String name;
-    private String price;
+
+
+    private int id;
+    private String name = "";
+    private String price = "";
     private String itemImageFile;
 
 
@@ -35,10 +38,19 @@ public class Item implements Serializable {
         return itemImageFile;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", itemImageFile='" + itemImageFile + '\'' +
                 '}';
