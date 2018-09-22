@@ -3,23 +3,30 @@ package com.dan.kaftan.common;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class MyService extends FirebaseMessagingService {
     String TAG = "MyService";
     public MyService() {
+        System.out.println("Registering to news");
+        System.out.println("Registering to news");
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        System.out.println("Registered to news");
 
     }
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        // ...
 
-        // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        System.out.println("Message from: " + remoteMessage.getFrom());
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
@@ -37,7 +44,7 @@ public class MyService extends FirebaseMessagingService {
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            System.out.println("Message Notification Body: " + remoteMessage.getNotification().getBody());
             handleNow(remoteMessage) ;
         }
 

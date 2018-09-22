@@ -146,6 +146,9 @@ public class EditItem extends AppCompatActivity {
                     DownloadCatalogActivity.items.add(location-1, editItem);
                 }
 
+                PushNotification pushNotification = new PushNotification();
+                pushNotification.sendNotification("/topics/news", name.getText().toString(), price.getText().toString());
+
                 // build and upload the catalog to fire base
                 // and go back to list view
                 uploadCatalogToStorage();
@@ -197,7 +200,7 @@ public class EditItem extends AppCompatActivity {
             fileName = UUID.randomUUID().toString() + ".jpg";
 
 
-            StorageReference ref = storageRef.child(ShopSpecificInfo.getShopInfo("shopBucket")+"/" + fileName);
+            StorageReference ref = storageRef.child(ShopSpecificInfo.getShopInfo("shopName")+"/" + fileName);
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -238,7 +241,7 @@ public class EditItem extends AppCompatActivity {
             progressDialog.show();
             fileName = "catalog.txt";
 
-            StorageReference ref = storageRef.child(ShopSpecificInfo.getShopInfo("shopBucket")+"/" + fileName);
+            StorageReference ref = storageRef.child(ShopSpecificInfo.getShopInfo("shopName")+"/" + fileName);
             ref.putBytes(catalog)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 

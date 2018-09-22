@@ -9,9 +9,11 @@ public class FcmToken extends FirebaseInstanceIdService{
 
     @Override
     public void onTokenRefresh() {
+        System.out.println("onTokenRefresh");
+
         // Get updated InstanceID token.
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("myFireBaseIdService", "Refreshed token: " + refreshedToken);
+        System.out.println("myFireBaseIdService Refreshed token: " + refreshedToken);
 
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
@@ -20,6 +22,6 @@ public class FcmToken extends FirebaseInstanceIdService{
     }
 
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
+        onTokenRefresh();
     }
 }

@@ -9,7 +9,7 @@ package="com.dan.kaftan.shopconsole">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name="com.dan.kaftan.shopconsole.ConsoleDownloadCatalogActivity" >
+    <activity android:name="com.dan.kaftan.shopconsole.ConsoleMainActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +20,6 @@ package="com.dan.kaftan.shopconsole">
     <service android:name="com.dan.kaftan.common.FcmToken">
         <intent-filter>
             <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-        </intent-filter>
-    </service>
-    <service
-        android:name="com.dan.kaftan.common.MyService">
-        <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
         </intent-filter>
     </service>
 </application>

@@ -10,7 +10,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".EditItem"></activity>
+        <activity android:name=".EditItem" />
+        <activity android:name=".NotificationActivity"></activity>
     </application>
 
 </manifest>

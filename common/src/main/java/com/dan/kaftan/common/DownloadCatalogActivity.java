@@ -46,6 +46,7 @@ public class DownloadCatalogActivity extends AppCompatActivity {
 
     // init firebase storage
     static FirebaseStorage storage = FirebaseStorage.getInstance();
+//    static StorageReference storageRef = storage.getReferenceFromUrl(ShopSpecificInfo.getShopInfo("storage_bucket"));
     static StorageReference storageRef = storage.getReferenceFromUrl("gs://online-shop-a32c0.appspot.com");
 
     // list of items to fill from the catalog
@@ -74,10 +75,6 @@ public class DownloadCatalogActivity extends AppCompatActivity {
             // start it as a service so it always run in background and gets notifications
             startService(new Intent(this, MyService.class));
 
-            // init specific shop params
-            ShopSpecificInfo.setShopInfo("shopBucket", "DemoShop");
-            ShopSpecificInfo.setShopInfo("catalogFile","catalog.txt");
-
             downloadTheCatalog(listView, customAdapter);
         } else {
             downloadTheCatalog(listView, customAdapter);
@@ -90,7 +87,7 @@ public class DownloadCatalogActivity extends AppCompatActivity {
         // reset items list
         items.clear();
         // get catalog file from storage
-        storageRef.child(ShopSpecificInfo.getShopInfo("shopBucket") +"/"+ ShopSpecificInfo.getShopInfo("catalogFile")).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        storageRef.child(ShopSpecificInfo.getShopInfo("shopName") +"/"+ ShopSpecificInfo.getShopInfo("catalogFile")).getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
 
             // once loaded - create item list out of it and start next activity
             @Override
@@ -172,7 +169,7 @@ public class DownloadCatalogActivity extends AppCompatActivity {
             itemPrice.setText("מחיר:"+(item.getPrice()));
             idTv.setText(Integer.valueOf(item.getId()).toString());
 
-            downloadImage(ShopSpecificInfo.getShopInfo("shopBucket"), item.getItemImageFile(), imageView);
+            downloadImage(ShopSpecificInfo.getShopInfo("shopName"), item.getItemImageFile(), imageView);
 
             if ("TRUE".equals(ShopSpecificInfo.getShopInfo("isConsole"))){
 
@@ -328,7 +325,7 @@ public class DownloadCatalogActivity extends AppCompatActivity {
 
             String fileName = "catalog.txt";
 
-            StorageReference ref = storageRef.child(ShopSpecificInfo.getShopInfo("shopBucket")+"/" + fileName);
+            StorageReference ref = storageRef.child(ShopSpecificInfo.getShopInfo("shopName")+"/" + fileName);
             ref.putBytes(catalog)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -388,7 +385,7 @@ public class DownloadCatalogActivity extends AppCompatActivity {
 
         Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
 
-        StorageReference riversRef = storageRef.child(ShopSpecificInfo.getShopInfo("shopBucket")+ "/"+ ShopSpecificInfo.getShopInfo("catalogFile"));
+        StorageReference riversRef = storageRef.child(ShopSpecificInfo.getShopInfo("shopName")+ "/"+ ShopSpecificInfo.getShopInfo("catalogFile"));
 
         riversRef.putFile(file)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -405,5 +402,10 @@ public class DownloadCatalogActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+    public void notificationBtnOnClick (View view){
+
+        Intent i =new Intent(DownloadCatalogActivity.this,NotificationActivity.class);
+        startActivity(i);
     }
 }
